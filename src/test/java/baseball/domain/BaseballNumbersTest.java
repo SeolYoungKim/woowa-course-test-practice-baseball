@@ -1,9 +1,14 @@
 package baseball.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -57,4 +62,58 @@ class BaseballNumbersTest {
         );
     }
 
+    @DisplayName("비교할 BaseballNumbers를 받았을 때")
+    @Nested
+    class comparisonResult {
+
+        private BaseballNumbers baseballNumbers;
+
+        @BeforeEach
+        void setUp() {
+            baseballNumbers = new BaseballNumbers(List.of(
+                    new BaseballNumber(0, 1),
+                    new BaseballNumber(1, 2),
+                    new BaseballNumber(2, 3)
+            ));
+        }
+
+        @DisplayName("3스트라이크를 반환하는 경우")
+        @Test
+        void threeStrikeCase() {
+            BaseballNumbers target = new BaseballNumbers(List.of(
+                    new BaseballNumber(0, 1),
+                    new BaseballNumber(1, 2),
+                    new BaseballNumber(2, 3)
+            ));
+            ComparisonResult comparisonResult = baseballNumbers.comparisonResult(target);
+            assertThat(comparisonResult.strikeCount()).isEqualTo(3);
+            assertThat(comparisonResult.ballCount()).isEqualTo(0);
+        }
+
+        @DisplayName("1스트라이크 2볼을 반환하는 경우")
+        @Test
+        void oneStrikeTwoBallCase() {
+            BaseballNumbers target = new BaseballNumbers(List.of(
+                    new BaseballNumber(0, 1),
+                    new BaseballNumber(1, 3),
+                    new BaseballNumber(2, 2)
+            ));
+            ComparisonResult comparisonResult = baseballNumbers.comparisonResult(target);
+            assertThat(comparisonResult.strikeCount()).isEqualTo(1);
+            assertThat(comparisonResult.ballCount()).isEqualTo(2);
+        }
+
+        @DisplayName("3볼을 반환하는 경우")
+        @Test
+        void threeBallCase() {
+            BaseballNumbers target = new BaseballNumbers(List.of(
+                    new BaseballNumber(0, 2),
+                    new BaseballNumber(1, 3),
+                    new BaseballNumber(2, 1)
+            ));
+            ComparisonResult comparisonResult = baseballNumbers.comparisonResult(target);
+            assertThat(comparisonResult.strikeCount()).isEqualTo(0);
+            assertThat(comparisonResult.ballCount()).isEqualTo(3);
+        }
+    }
 }
