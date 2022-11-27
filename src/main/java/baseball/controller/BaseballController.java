@@ -24,7 +24,7 @@ public class BaseballController {
         outputView.printStartMessage();
         gameStart();
 
-        System.out.println("게임이 종료되었습니다.");
+        outputView.printGameEndMessage();
     }
 
     private void gameStart() {
@@ -33,9 +33,7 @@ public class BaseballController {
 
         while (!baseballGame.isEnd()) {
             ComparisonResult comparisonResult = inputAndComparison(computerNumbers);
-            if (comparisonResult.isThreeStrike()) {
-                restartOrQuit(baseballGame);
-            }
+            checkComparisonResult(baseballGame, comparisonResult);
 
             if (baseballGame.isRestart()) {
                 computerNumbers = baseballNumbersGenerator.randomNumbersForComputer();
@@ -54,8 +52,14 @@ public class BaseballController {
         return comparisonResult;
     }
 
-    private void restartOrQuit(BaseballGame baseballGame) {
-        outputView.printEndMessage();
+    private void checkComparisonResult(BaseballGame baseballGame, ComparisonResult comparisonResult) {
+        if (comparisonResult.isThreeStrike()) {
+            inputCommandForRestartOrQuit(baseballGame);
+        }
+    }
+
+    private void inputCommandForRestartOrQuit(BaseballGame baseballGame) {
+        outputView.printCorrectAnswerMessage();
         baseballGame.setGameCommand(inputView.restartOrQuit());
     }
 }

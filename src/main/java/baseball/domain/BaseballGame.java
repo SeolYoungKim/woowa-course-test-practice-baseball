@@ -2,23 +2,21 @@ package baseball.domain;
 
 public class BaseballGame {
 
-    private static final int INIT_VALUE_OF_GAME_COMMAND = 0;
-
-    private int gameCommand;
+    private GameCommand gameCommand;
 
     public BaseballGame() {
-        this.gameCommand = INIT_VALUE_OF_GAME_COMMAND;
+        this.gameCommand = GameCommand.INIT;
     }
 
     public boolean isEnd() {
-        return gameCommand == 2;
+        return gameCommand.is(GameCommand.QUIT);
     }
 
     public boolean isRestart() {
-        return gameCommand == 1;
+        return gameCommand.is(GameCommand.RESTART);
     }
 
-    public void setGameCommand(int command) {
+    public void setGameCommand(GameCommand command) {
         gameCommand = command;
     }
 
@@ -27,6 +25,6 @@ public class BaseballGame {
     }
 
     private void resetGameCommand() {
-        gameCommand = 0;
+        gameCommand = GameCommand.INIT;
     }
 }
