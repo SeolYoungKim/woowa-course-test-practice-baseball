@@ -13,6 +13,7 @@ public enum GameCommand {
     ;
 
     private static final Map<String, GameCommand> GAME_COMMANDS = Arrays.stream(values())
+            .filter(gameCommand -> !gameCommand.command.equals("0"))
             .collect(Collectors.toUnmodifiableMap(
                     gameCommand -> gameCommand.command,
                     Function.identity()));
