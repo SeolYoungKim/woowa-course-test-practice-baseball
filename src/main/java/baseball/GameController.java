@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.domain.Duplicate;
+import baseball.domain.Judgement;
+import baseball.domain.RandomNumber;
+
 import java.util.List;
 import java.util.Objects;
 

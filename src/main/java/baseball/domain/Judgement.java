@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ public class Judgement {
 
     Duplicate duplicate;
 
-    Judgement(Duplicate duplicate) {
+    public Judgement(Duplicate duplicate) {
         this.duplicate = duplicate;
     }
 
