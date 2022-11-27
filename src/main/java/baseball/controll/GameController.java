@@ -26,53 +26,53 @@ public class GameController {
         startBaseball();
     }
 
-    public void startBaseball() {
+    private void startBaseball() {
         makeAnswerNumber();
         retryOrFinish();
     }
 
-    public void makeAnswerNumber() {
+    private void makeAnswerNumber() {
         List<Integer> answerNumber = randomNumber.makeAnswer();
         baseball(answerNumber);
     }
 
-    public void baseball(List<Integer> answerNumber) {
+    private void baseball(List<Integer> answerNumber) {
         List<Integer> player = getNumber();
-        h(answerNumber, player);
+        judgementBallOrStrike(answerNumber, player);
     }
 
-    public List<Integer> getNumber() {
+    private List<Integer> getNumber() {
         outputView.askNumber();
         return inputView.readPlayerNumber();
     }
 
-    public void h(List<Integer> answerNumber, List<Integer> player) {
+    private void judgementBallOrStrike(List<Integer> answerNumber, List<Integer> player) {
         int strike = judgement.strike(answerNumber, player);
         int ball = judgement.ball(answerNumber, player);
         outputView.informResult(ball, strike);
         checkStrike(strike, answerNumber);
     }
 
-    public void checkStrike(int strike, List<Integer> answerNumber) {
+    private void checkStrike(int strike, List<Integer> answerNumber) {
         if (strike != 3) {
             baseball(answerNumber);
         }
     }
 
-    public void retryOrFinish() {
+    private void retryOrFinish() {
         String retry = getRetryNumber();
         if (checkRetry(retry)) {
             startBaseball();
         }
     }
 
-    public String getRetryNumber() {
+    private String getRetryNumber() {
         outputView.correctAnswer();
         outputView.askRetry();
         return inputView.readRetry();
     }
 
-    public boolean checkRetry(String d) {
+    private boolean checkRetry(String d) {
         return Objects.equals(d, "1");
     }
 }
