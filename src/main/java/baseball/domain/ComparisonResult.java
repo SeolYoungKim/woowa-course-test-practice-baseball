@@ -2,35 +2,35 @@ package baseball.domain;
 
 public class ComparisonResult {
 
-    private final int strikeCount;
-    private final int ballCount;
+    private final Counts strikeCount;
+    private final Counts ballCount;
 
-    public ComparisonResult(int strikeCount, int ballCount) {
+    public ComparisonResult(Counts strikeCount, Counts ballCount) {
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
     }
 
     public boolean isNothing() {
-        return strikeCount == 0 && ballCount == 0;
+        return strikeCount.isZero() && ballCount.isZero();
     }
 
     public boolean hasMoreThanOneStrike() {
-        return 1 <= strikeCount;
+        return strikeCount.isMoreThanOne();
     }
 
     public boolean hasMoreThanOneBall() {
-        return 1 <= ballCount;
+        return ballCount.isMoreThanOne();
     }
 
     public boolean isThreeStrike() {
-        return strikeCount == 3;
+        return strikeCount.isThree();
     }
 
     public int strikeCount() {
-        return strikeCount;
+        return strikeCount.value();
     }
 
     public int ballCount() {
-        return ballCount;
+        return ballCount.value();
     }
 }
