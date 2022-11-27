@@ -10,6 +10,22 @@ public class ComparisonResult {
         this.ballCount = ballCount;
     }
 
+    public boolean isNothing() {
+        return strikeCount == 0 && ballCount == 0;
+    }
+
+    public boolean hasMoreThanOneStrike() {
+        return 1 <= strikeCount;
+    }
+
+    public boolean hasMoreThanOneBall() {
+        return 1 <= ballCount;
+    }
+
+    public boolean isThreeStrike() {
+        return strikeCount == 3;
+    }
+
     public int strikeCount() {
         return strikeCount;
     }

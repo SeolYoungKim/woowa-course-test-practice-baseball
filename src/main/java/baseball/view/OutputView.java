@@ -1,6 +1,14 @@
 package baseball.view;
 
+import baseball.domain.ComparisonResult;
+
 public class OutputView {
+
+    private final OutputViewFormatter outputViewFormatter;
+
+    public OutputView(OutputViewFormatter outputViewFormatter) {
+        this.outputViewFormatter = outputViewFormatter;
+    }
 
     // 게임 시작 문구를 출력한다.
     public void printStartMessage() {
@@ -8,8 +16,9 @@ public class OutputView {
     }
 
     // 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시한다.
-    public void printResults() {
+    public void printResults(ComparisonResult comparisonResult) {
         // 결과를 받고, 결과를 포맷에 맞게 출력!
+        System.out.println(outputViewFormatter.resultFormat(comparisonResult));
     }
 
     // 모두 맞췄을 경우 결과 출력
