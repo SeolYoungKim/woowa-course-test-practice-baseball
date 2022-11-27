@@ -1,6 +1,6 @@
 package baseball.view;
 
-import java.util.StringJoiner;
+import baseball.domain.Result;
 
 public class OutputView {
 
@@ -14,9 +14,9 @@ public class OutputView {
         printLine("숫자 야구 게임을 시작합니다.");
     }
 
-    public void printResult(int ball, int strike) {
-        String result = outputFormatter.formatResult(ball, strike);
-        printLine(result);
+    public void printResult(Result result) {
+        String formattedResult = outputFormatter.formatResult(result);
+        printLine(formattedResult);
     }
 
     public void printSuccess() {
