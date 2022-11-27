@@ -21,4 +21,8 @@ public class Result {
     public boolean isNothing() {
         return ball == 0 && strike == 0;
     }
+
+    public boolean isSuccess() {
+        return strike == Numbers.NUMBER_COUNT;
+    }
 }

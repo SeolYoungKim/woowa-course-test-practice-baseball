@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.Numbers;
+import baseball.domain.Result;
 import baseball.service.RandomNumbersGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -30,7 +31,7 @@ public class BaseballGameMachine {
         Numbers randomNumbers = randomNumbersGenerator.generate();
 
         Numbers numbers = inputNumbers();
-
+        Result result = match(numbers, randomNumbers);
     }
 
     private Numbers inputNumbers() {
@@ -38,5 +39,10 @@ public class BaseballGameMachine {
         return new Numbers(numbers);
     }
 
+    private Result match(Numbers numbers, Numbers randomNumbers) {
+        Result result = numbers.match(randomNumbers);
+        outputView.printResult(result);
 
+        return result;
+    }
 }
