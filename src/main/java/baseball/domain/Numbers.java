@@ -43,10 +43,6 @@ public class Numbers {
         }
     }
 
-    public List<Integer> numbers() {
-        return List.copyOf(numbers);
-    }
-
     public Result match(Numbers other) {
         int ball = matchBall(other);
         int strike = matchStrike(other);
