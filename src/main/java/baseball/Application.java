@@ -1,7 +1,15 @@
 package baseball;
 
+import baseball.controll.GameController;
+import baseball.view.InputView;
+import baseball.view.OutputView;
+import baseball.view.TypeChange;
+import baseball.view.Verification;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameController gameController = new GameController(new InputView(new Verification(), new TypeChange()), new OutputView());
+
+        gameController.startGame();
     }
 }
