@@ -25,6 +25,11 @@ public class BaseballGameMachine {
 
         while (true) {
             playGame();
+            boolean retry = inputView.inputRetry();
+
+            if (!retry) {
+                break;
+            }
         }
     }
 
