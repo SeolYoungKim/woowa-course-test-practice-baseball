@@ -41,6 +41,7 @@ public class BaseballGameMachine {
             Result result = match(numbers, randomNumbers);
 
             if (result.isSuccess()) {
+                outputView.printSuccess();
                 break;
             }
         }
