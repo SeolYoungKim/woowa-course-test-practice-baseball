@@ -47,6 +47,33 @@ public class Numbers {
         return List.copyOf(numbers);
     }
 
+    public Result match(Numbers other) {
+        int ball = matchBall(other);
+        int strike = matchStrike(other);
+
+        return new Result(ball, strike);
+    }
+
+    private int matchStrike(Numbers other) {
+        int strike = 0;
+
+        for (int i = 0; i < NUMBER_COUNT; i++) {
+            if (Objects.equals(numbers.get(i), other.numbers.get(i))) {
+                strike++;
+            }
+        }
+
+        return strike;
+    }
+
+    private int matchBall(Numbers other) {
+        int ball = (int) other.numbers.stream()
+                .filter(numbers::contains)
+                .count();
+
+        return ball - matchStrike(other);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
