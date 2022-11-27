@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class BaseballNumber {
-    private final int position;
+
+    private final Position position;
     private final int number;
 
-    public BaseballNumber(int position, int number) {
-        validateRangeOfPosition(position);
+    public BaseballNumber(Position position, int number) {
         validateRangeOfNumber(number);
 
         this.position = position;
@@ -21,8 +21,8 @@ public class BaseballNumber {
     }
 
     private boolean isBall(BaseballNumber other) {
-        return position != other.position &&
-                number == other.number;
+        return !position.equals(other.position)
+                && number == other.number;
     }
 
     public boolean isDuplicatedIn(List<BaseballNumber> baseballNumbers) {
@@ -50,14 +50,6 @@ public class BaseballNumber {
     @Override
     public int hashCode() {
         return Objects.hash(position, number);
-    }
-
-    private void validateRangeOfPosition(int position) {
-        final int MIN_VALUE_FOR_POSITION = 0;
-        final int MAX_VALUE_FOR_POSITION = 2;
-        if (position < MIN_VALUE_FOR_POSITION || MAX_VALUE_FOR_POSITION < position) {
-            throw new IllegalArgumentException("잘못된 포지션 입니다. 0, 1, 2만 가능합니다.");
-        }
     }
 
     private void validateRangeOfNumber(int number) {

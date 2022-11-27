@@ -2,6 +2,7 @@ package baseball.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BaseballNumbersGenerator {
 
@@ -26,8 +27,9 @@ public class BaseballNumbersGenerator {
 
     private BaseballNumbers integerListToBaseballNumbers(List<Integer> numbers) {
         return new BaseballNumbers(
-                numbers.stream()
-                        .map(number -> new BaseballNumber(numbers.indexOf(number), number))
+                IntStream.range(0, numbers.size())
+                        .mapToObj(i -> new BaseballNumber(Position.of(i), numbers.get(i)))
                         .collect(Collectors.toList()));
     }
+
 }

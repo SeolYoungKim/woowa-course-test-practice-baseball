@@ -27,14 +27,14 @@ class BaseballNumbersTest {
     static Stream<Arguments> listForValidateSize() {
         return Stream.of(
                 Arguments.of(List.of(
-                        new BaseballNumber(0, 1),
-                        new BaseballNumber(1, 2)
+                        new BaseballNumber(Position.of(0), 1),
+                        new BaseballNumber(Position.of(1), 2)
                 )),
                 Arguments.of(List.of(
-                        new BaseballNumber(0, 1),
-                        new BaseballNumber(1, 2),
-                        new BaseballNumber(2, 3),
-                        new BaseballNumber(3, 4)
+                        new BaseballNumber(Position.of(0), 1),
+                        new BaseballNumber(Position.of(1), 2),
+                        new BaseballNumber(Position.of(2), 3),
+                        new BaseballNumber(Position.of(2), 4)
                 ))
         );
     }
@@ -50,14 +50,14 @@ class BaseballNumbersTest {
     static Stream<Arguments> listForValidateDuplication() {
         return Stream.of(
                 Arguments.of(List.of(
-                        new BaseballNumber(0, 1),
-                        new BaseballNumber(1, 2),
-                        new BaseballNumber(2, 2)
+                        new BaseballNumber(Position.of(0), 1),
+                        new BaseballNumber(Position.of(1), 2),
+                        new BaseballNumber(Position.of(2), 2)
                 )),
                 Arguments.of(List.of(
-                        new BaseballNumber(0, 1),
-                        new BaseballNumber(1, 1),
-                        new BaseballNumber(2, 1)
+                        new BaseballNumber(Position.of(0), 1),
+                        new BaseballNumber(Position.of(1), 1),
+                        new BaseballNumber(Position.of(2), 1)
                 ))
         );
     }
@@ -71,9 +71,9 @@ class BaseballNumbersTest {
         @BeforeEach
         void setUp() {
             baseballNumbers = new BaseballNumbers(List.of(
-                    new BaseballNumber(0, 1),
-                    new BaseballNumber(1, 2),
-                    new BaseballNumber(2, 3)
+                    new BaseballNumber(Position.of(0), 1),
+                    new BaseballNumber(Position.of(1), 2),
+                    new BaseballNumber(Position.of(2), 3)
             ));
         }
 
@@ -81,9 +81,9 @@ class BaseballNumbersTest {
         @Test
         void threeStrikeCase() {
             BaseballNumbers target = new BaseballNumbers(List.of(
-                    new BaseballNumber(0, 1),
-                    new BaseballNumber(1, 2),
-                    new BaseballNumber(2, 3)
+                    new BaseballNumber(Position.of(0), 1),
+                    new BaseballNumber(Position.of(1), 2),
+                    new BaseballNumber(Position.of(2), 3)
             ));
             ComparisonResult comparisonResult = baseballNumbers.comparisonResult(target);
             assertThat(comparisonResult.strikeCount()).isEqualTo(3);
@@ -94,9 +94,9 @@ class BaseballNumbersTest {
         @Test
         void oneStrikeTwoBallCase() {
             BaseballNumbers target = new BaseballNumbers(List.of(
-                    new BaseballNumber(0, 1),
-                    new BaseballNumber(1, 3),
-                    new BaseballNumber(2, 2)
+                    new BaseballNumber(Position.of(0), 1),
+                    new BaseballNumber(Position.of(1), 3),
+                    new BaseballNumber(Position.of(2), 2)
             ));
             ComparisonResult comparisonResult = baseballNumbers.comparisonResult(target);
             assertThat(comparisonResult.strikeCount()).isEqualTo(1);
@@ -107,9 +107,9 @@ class BaseballNumbersTest {
         @Test
         void threeBallCase() {
             BaseballNumbers target = new BaseballNumbers(List.of(
-                    new BaseballNumber(0, 2),
-                    new BaseballNumber(1, 3),
-                    new BaseballNumber(2, 1)
+                    new BaseballNumber(Position.of(0), 2),
+                    new BaseballNumber(Position.of(1), 3),
+                    new BaseballNumber(Position.of(2), 1)
             ));
             ComparisonResult comparisonResult = baseballNumbers.comparisonResult(target);
             assertThat(comparisonResult.strikeCount()).isEqualTo(0);
@@ -120,9 +120,9 @@ class BaseballNumbersTest {
         @Test
         void nothingCase() {
             BaseballNumbers target = new BaseballNumbers(List.of(
-                    new BaseballNumber(0, 9),
-                    new BaseballNumber(1, 7),
-                    new BaseballNumber(2, 8)
+                    new BaseballNumber(Position.of(0), 9),
+                    new BaseballNumber(Position.of(1), 7),
+                    new BaseballNumber(Position.of(2), 8)
             ));
             ComparisonResult comparisonResult = baseballNumbers.comparisonResult(target);
             assertThat(comparisonResult.strikeCount()).isEqualTo(0);
