@@ -2,6 +2,7 @@ package baseball.domain;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class Numbers {
 
@@ -38,15 +39,9 @@ public class Numbers {
     }
 
     private int matchStrike(Numbers other) {
-        int strike = 0;
-
-        for (int i = 0; i < NUMBER_COUNT; i++) {
-            if (Objects.equals(numbers.get(i), other.numbers.get(i))) {
-                strike++;
-            }
-        }
-
-        return strike;
+        return (int) IntStream.range(0, NUMBER_COUNT)
+                .filter(i -> Objects.equals(numbers.get(i), other.numbers.get(i)))
+                .count();
     }
 
     private int matchBall(Numbers other) {
