@@ -13,7 +13,8 @@ public class BaseballGameMachine {
     private final OutputView outputView;
     private final RandomNumbersGenerator randomNumbersGenerator;
 
-    public BaseballGameMachine(InputView inputView, OutputView outputView, RandomNumbersGenerator randomNumbersGenerator) {
+    public BaseballGameMachine(InputView inputView, OutputView outputView,
+            RandomNumbersGenerator randomNumbersGenerator) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.randomNumbersGenerator = randomNumbersGenerator;
@@ -30,8 +31,14 @@ public class BaseballGameMachine {
     private void playGame() {
         Numbers randomNumbers = randomNumbersGenerator.generate();
 
-        Numbers numbers = inputNumbers();
-        Result result = match(numbers, randomNumbers);
+        while (true) {
+            Numbers numbers = inputNumbers();
+            Result result = match(numbers, randomNumbers);
+
+            if (result.isSuccess()) {
+                break;
+            }
+        }
     }
 
     private Numbers inputNumbers() {
