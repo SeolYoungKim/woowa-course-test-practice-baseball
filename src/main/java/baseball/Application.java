@@ -1,7 +1,13 @@
 package baseball;
 
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameController gameController = new GameController(new InputView(new Verification(), new TypeChange()), new OutputView());
+
+        gameController.startGame();
     }
 }
