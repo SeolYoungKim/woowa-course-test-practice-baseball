@@ -115,5 +115,18 @@ class BaseballNumbersTest {
             assertThat(comparisonResult.strikeCount()).isEqualTo(0);
             assertThat(comparisonResult.ballCount()).isEqualTo(3);
         }
+
+        @DisplayName("아무것도 맞추지 못한 경우")
+        @Test
+        void nothingCase() {
+            BaseballNumbers target = new BaseballNumbers(List.of(
+                    new BaseballNumber(0, 9),
+                    new BaseballNumber(1, 7),
+                    new BaseballNumber(2, 8)
+            ));
+            ComparisonResult comparisonResult = baseballNumbers.comparisonResult(target);
+            assertThat(comparisonResult.strikeCount()).isEqualTo(0);
+            assertThat(comparisonResult.ballCount()).isEqualTo(0);
+        }
     }
 }
