@@ -5,7 +5,7 @@ public class Result {
     private final int ball;
     private final int strike;
 
-    Result(int ball, int strike) {
+    public Result(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
     }
