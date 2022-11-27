@@ -16,7 +16,8 @@ public class BaseballNumbers {
         int strikeCount = strikeCount(other);
         int ballCount = ballCount(other);
 
-        return new ComparisonResult(strikeCount, ballCount);
+        return new ComparisonResult(
+                Counts.of(strikeCount), Counts.of(ballCount));
     }
 
     private int strikeCount(BaseballNumbers other) {

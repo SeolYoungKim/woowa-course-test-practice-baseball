@@ -13,13 +13,20 @@ public class Counts {
                 .forEach(i -> COUNTS.put(i, new Counts(i)));
     }
 
-    static Counts of(int counts) {
-        return COUNTS.get(counts);
+    static Counts of(int value) {
+        validateValue(value);
+        return COUNTS.get(value);
+    }
+
+    private static void validateValue(int value) {
+        if (!COUNTS.containsKey(value)) {
+            throw new IllegalArgumentException("잘못된 카운트 입니다. 0이상 3이하의 수만 입력해 주세요.");
+        }
     }
 
     private final int value;
 
-    public Counts(int value) {
+    private Counts(int value) {
         this.value = value;
     }
 
