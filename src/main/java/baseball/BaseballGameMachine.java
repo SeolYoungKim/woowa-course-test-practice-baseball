@@ -1,11 +1,13 @@
 package baseball;
 
+import baseball.domain.Number;
 import baseball.domain.Numbers;
 import baseball.domain.Result;
 import baseball.service.RandomNumbersGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BaseballGameMachine {
 
@@ -48,7 +50,9 @@ public class BaseballGameMachine {
     }
 
     private Numbers inputNumbers() {
-        List<Integer> numbers = inputView.inputNumbers();
+        List<Number> numbers = inputView.inputNumbers().stream()
+                .map(Number::new).collect(Collectors.toList());
+
         return new Numbers(numbers);
     }
 
