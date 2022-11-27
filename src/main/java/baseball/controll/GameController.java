@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controll;
 
 import baseball.domain.Duplicate;
 import baseball.domain.Judgement;
