@@ -1,8 +1,9 @@
 package baseball;
 
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import baseball.view.InputView;
+import baseball.view.OutputView;
+import baseball.view.TypeChange;
+import baseball.view.Verification;
 
 public class Application {
     public static void main(String[] args) {

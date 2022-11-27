@@ -3,6 +3,8 @@ package baseball;
 import baseball.domain.Duplicate;
 import baseball.domain.Judgement;
 import baseball.domain.RandomNumber;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,7 +16,7 @@ public class GameController {
     private final RandomNumber randomNumber = new RandomNumber();
     private final Judgement judgement = new Judgement(new Duplicate());
 
-    GameController(InputView inputView, OutputView outputView) {
+    public GameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
