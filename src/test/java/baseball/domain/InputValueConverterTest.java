@@ -15,7 +15,7 @@ class InputValueConverterTest {
 
     @DisplayName("문자열을 입력 받았을 때")
     @Nested
-    class test1 {
+    class inputValueToList {
 
         @ParameterizedTest(name = "세 자리의 숫자면 List<Integer>를 반환한다. 입력: {0}")
         @ValueSource(strings = {"123", "111", "987"})
@@ -30,14 +30,6 @@ class InputValueConverterTest {
             assertThatThrownBy(() -> inputValueConverter.inputValueToList(inputValue))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("숫자만 입력해 주세요.");
-        }
-
-        @ParameterizedTest(name = "세 자리가 아니면 예외를 발생시킨다. 입력: {0}")
-        @ValueSource(strings = {"12345", "11", "1"})
-        void convertFailBecauseLength(String inputValue) {
-            assertThatThrownBy(() -> inputValueConverter.inputValueToList(inputValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("세 자리 숫자만 입력해 주세요.");
         }
     }
 }
