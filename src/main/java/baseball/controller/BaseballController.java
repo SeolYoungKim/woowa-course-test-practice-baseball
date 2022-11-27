@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.BaseballGame;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.BaseballNumbersGenerator;
 import baseball.domain.ComparisonResult;
@@ -28,19 +29,17 @@ public class BaseballController {
 
     private void gameStart() {
         BaseballNumbers computerNumbers = baseballNumbersGenerator.randomNumbersForComputer();
-        int gameCommand = 0;
+        BaseballGame baseballGame = new BaseballGame();
 
-        while (gameCommand != 2) {
+        while (!baseballGame.isEnd()) {
             ComparisonResult comparisonResult = inputAndComparison(computerNumbers);
-
             if (comparisonResult.isThreeStrike()) {
-                outputView.printEndMessage();
-                gameCommand = inputView.restartOrQuit();
+                restartOrQuit(baseballGame);
             }
 
-            if (gameCommand == 1) {
+            if (baseballGame.isRestart()) {
                 computerNumbers = baseballNumbersGenerator.randomNumbersForComputer();
-                gameCommand = 0;
+                baseballGame.restart();
             }
         }
     }
@@ -53,5 +52,10 @@ public class BaseballController {
         outputView.printResults(comparisonResult);
 
         return comparisonResult;
+    }
+
+    private void restartOrQuit(BaseballGame baseballGame) {
+        outputView.printEndMessage();
+        baseballGame.setGameCommand(inputView.restartOrQuit());
     }
 }
