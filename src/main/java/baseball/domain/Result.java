@@ -23,6 +23,6 @@ public class Result {
     }
 
     public boolean isSuccess() {
-        return strike == Numbers.NUMBER_COUNT;
+        return strike == Numbers.NUMBERS_SIZE;
     }
 }

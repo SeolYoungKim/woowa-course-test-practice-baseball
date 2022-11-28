@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Numbers {
 
-    public final static int NUMBER_COUNT = 3;
+    public final static int NUMBERS_SIZE = 3;
     private final List<Number> numbers;
 
     public Numbers(List<Number> numbers) {
@@ -17,9 +17,9 @@ public class Numbers {
     }
 
     private void validateNumbersSize(List<Number> numbers) {
-        if (numbers.size() != NUMBER_COUNT) {
+        if (numbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException(
-                    String.format("숫자는 %d개여야 합니다.", NUMBER_COUNT));
+                    String.format("숫자는 %d개여야 합니다.", NUMBERS_SIZE));
         }
     }
 
@@ -39,7 +39,7 @@ public class Numbers {
     }
 
     private int matchStrike(Numbers other) {
-        return (int) IntStream.range(0, NUMBER_COUNT)
+        return (int) IntStream.range(0, NUMBERS_SIZE)
                 .filter(i -> Objects.equals(numbers.get(i), other.numbers.get(i)))
                 .count();
     }

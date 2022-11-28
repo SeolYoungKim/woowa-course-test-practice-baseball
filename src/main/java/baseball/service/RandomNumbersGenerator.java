@@ -2,7 +2,7 @@ package baseball.service;
 
 import static baseball.domain.Number.NUMBER_MAX_INCLUSIVE;
 import static baseball.domain.Number.NUMBER_MIN_INCLUSIVE;
-import static baseball.domain.Numbers.NUMBER_COUNT;
+import static baseball.domain.Numbers.NUMBERS_SIZE;
 
 import baseball.domain.Number;
 import baseball.domain.Numbers;
@@ -24,7 +24,7 @@ public class RandomNumbersGenerator {
 
     private List<Integer> pickUniqueNumbersInRange() {
         final Set<Integer> numbers = new HashSet<>();
-        while (numbers.size() < NUMBER_COUNT) {
+        while (numbers.size() < NUMBERS_SIZE) {
             numbers.add(Randoms.pickNumberInRange(NUMBER_MIN_INCLUSIVE, NUMBER_MAX_INCLUSIVE));
         }
 
