@@ -3,7 +3,6 @@ package baseball.view;
 import baseball.constants.SystemMessage;
 
 public class PlayerOutput {
-
     public void printNotSing(String notSing) {
         System.out.println(notSing);
     }

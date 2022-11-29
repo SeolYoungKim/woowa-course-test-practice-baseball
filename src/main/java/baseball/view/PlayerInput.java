@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerInput {
-
     private final ValidateInput validateInput;
 
     public PlayerInput(ValidateInput validateInput) {

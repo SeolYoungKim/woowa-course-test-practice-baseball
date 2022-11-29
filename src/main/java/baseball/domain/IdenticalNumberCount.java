@@ -3,7 +3,6 @@ package baseball.domain;
 import java.util.List;
 
 public class IdenticalNumberCount {
-
     public int findPlayersAndComputer(Baseball baseball) {
         List<Integer> player = baseball.playerNumbers();
         List<Integer> computer = baseball.computerNumbers();

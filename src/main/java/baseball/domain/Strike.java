@@ -3,7 +3,6 @@ package baseball.domain;
 import java.util.List;
 
 public class Strike {
-
     public int findCountStrike(Baseball baseball) {
         List<Integer> player = baseball.playerNumbers();
         List<Integer> computer = baseball.computerNumbers();

@@ -3,7 +3,6 @@ package baseball.domain;
 import java.util.List;
 
 public class Baseball {
-
     private final List<Integer> player;
     private final List<Integer> computer;
 
@@ -19,6 +18,4 @@ public class Baseball {
     public List<Integer> computerNumbers() {
         return computer;
     }
-
-
 }

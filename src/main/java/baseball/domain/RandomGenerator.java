@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomGenerator {
-
     public List<Integer> computerNumber() {
 
         List<Integer> computer = new ArrayList<>();
