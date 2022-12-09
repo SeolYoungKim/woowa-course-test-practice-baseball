@@ -2,6 +2,9 @@ package baseball.domain;
 
 import java.util.List;
 
+/**
+ * 12.09
+ */
 public class Baseball {
     private final List<Integer> player;
     private final List<Integer> computer;
